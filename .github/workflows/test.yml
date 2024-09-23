@@ -45,6 +45,9 @@ jobs:
        sudo mv migrate /usr/bin/
        which migrate
 
+    - name: Set DB_SOURCE environment variable
+      run: echo "DB_SOURCE=postgresql://postgres:newpassword@localhost:5433/simple_bank?sslmode=disable" >> $GITHUB_ENV
+
     - name: Run migrations
       run: make migrateup
 
